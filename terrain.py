@@ -98,6 +98,7 @@ class Terrain:
         """
         Affiche le terrain dans p5
         """
+        background(250)
         for i in range(len(self.obstacles)):
             self.obstacles[i].display()
 
