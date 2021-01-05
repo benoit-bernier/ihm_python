@@ -16,23 +16,26 @@ def setup():
 
     piou = Piou(int(util.SCREEN_Y // 2))
     terrain = Terrain()
-    jeu = Jeu(terrain, piou, vitesse=1)
+    jeu = Jeu(terrain, piou)
 
 
 def draw():
     global piou, terrain, jeu
-
-    terrain.afficher()
-    terrain.display()
-    piou.afficher()
-    piou.display()
-    terrain.avancer(jeu.vitesse)
-    piou.set_pos_y(util.calcul_nouvelle_pos_y(300))
-    if terrain.intersect(piou):
-        print("Le jeu s'arrête là, tu as obtenu un score de {}".format(jeu.score))
-        jeu.arreter_jeu()
+    if jeu.arret_jeu :
+        text("Vous avez terminé le jeu", util.SCREEN_X//2, util.SCREEN_Y//2)
     else:
-        jeu.score += 1
+        terrain.avancer(jeu.vitesse)
+        piou.set_pos_y(util.calcul_nouvelle_pos_y(300))
+        if terrain.intersect(piou):
+            print("Le jeu s'arrête là, tu as obtenu un score de {}".format(jeu.score))
+            jeu.arreter_jeu()
+        else:
+            jeu.score += 1
+
+        terrain.afficher()
+        terrain.display()
+        piou.afficher()
+        piou.display()
 
 if __name__ == '__main__':
     run()

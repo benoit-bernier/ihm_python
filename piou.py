@@ -25,5 +25,5 @@ class Piou:
         print("Piou est à x={}, y={}".format(self.pos_x, self.pos_y))
 
     def display(self):
-        fill('rgba(0,255,0, 0.25)')
+        fill(Color(218, 247, 166))
         circle(self.pos_x, self.pos_y, 20)
