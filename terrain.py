@@ -20,6 +20,7 @@ class Terrain:
             Obstacle(
             util.calcul_nouvelle_pos_y(self.obstacles[-1].min_y),
             self.obstacles[-1].pos_x+util.LARGEUR_OBSTACLE,
+            couleur=util.random_color()
             )
         )     
 
