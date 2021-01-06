@@ -33,9 +33,9 @@ class Terrain:
             Obstacle(
                 int((util.SCREEN_Y/2)-(util.HAUTEUR_CHEMIN/2)), #Centre le chemin sur la hauteur de l'écran
                 0
-                )
+            )
         )
-        for _ in range(int(util.SCREEN_Y//util.LARGEUR_OBSTACLE)): 
+        for _ in range(int(util.SCREEN_X//util.LARGEUR_OBSTACLE)): 
             self.nouvel_obstacle()
 
     def intersect(self, piou):

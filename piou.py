@@ -17,6 +17,17 @@ class Piou:
         """
         # TODO: à l'avenir contrôler i et le modifier ou lever une exception.
         self.pos_y = i
+    
+    def bouger_de(self, i):
+        """
+        Modifie la propriété pos_y de i
+        """
+        if(self.pos_y <= 0):
+            self.pos_y = 0
+        elif self.pos_y >= util.SCREEN_Y:
+            self.pos_y = util.SCREEN_Y
+        else :
+            self.pos_y += i
 
     def afficher(self):
         """
