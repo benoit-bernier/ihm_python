@@ -1,5 +1,5 @@
 import random
-from p5 import *
+from p5 import Color
 
 #~~~~~~ CONSTANTES ~~~~~~
 SCREEN_X = 900
@@ -7,7 +7,7 @@ SCREEN_Y = 600
 LARGEUR_OBSTACLE = 100
 HAUTEUR_CHEMIN = 100
 POS_X_PIOU = 250
-FACTEUR_DECALAGE_Y = 10
+FACTEUR_DECALAGE_Y = 5
 COULEUR = Color(125, 255, 125)
 VITESSE = 1
 LISTE_HAUT=['Z', 'z', "UP"]

@@ -1,8 +1,7 @@
-from p5 import *
 import util
 from collections import deque
 
-from obstacle import *
+from obstacle_p5 import *
 
 class Terrain:
     def __init__(self, obstacles=deque()):
@@ -17,10 +16,10 @@ class Terrain:
         Ajoute un obstacle à la file d'obstacles de l'objet
         """        
         self.obstacles.append(
-            Obstacle(
-            util.calcul_nouvelle_pos_y(self.obstacles[-1].min_y),
-            self.obstacles[-1].pos_x+util.LARGEUR_OBSTACLE,
-            couleur=util.random_color()
+            Obstacle_P5(
+                util.calcul_nouvelle_pos_y(self.obstacles[-1].min_y),
+                self.obstacles[-1].pos_x+util.LARGEUR_OBSTACLE,
+                couleur=util.random_color()
             )
         )     
 
@@ -30,7 +29,7 @@ class Terrain:
         """
         self.obstacles=deque()  
         self.obstacles.append(
-            Obstacle(
+            Obstacle_P5(
                 int((util.SCREEN_Y/2)-(util.HAUTEUR_CHEMIN/2)), #Centre le chemin sur la hauteur de l'écran
                 0
             )
@@ -94,12 +93,4 @@ class Terrain:
         for i in range(len(self.obstacles)):
             self.obstacles[i].afficher()
         print("   Fin du dernier obstacle : {}".format(self.obstacles[-1].pos_x + util.LARGEUR_OBSTACLE))
-
-    def display(self):
-        """
-        Affiche le terrain dans p5
-        """
-        background(250)
-        for i in range(len(self.obstacles)):
-            self.obstacles[i].display()
 

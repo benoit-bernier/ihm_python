@@ -1,4 +1,3 @@
-from p5 import *
 import util
 
 class Piou:
@@ -22,6 +21,11 @@ class Piou:
     def bouger_de(self, i):
         """
         Modifie la propriété pos_y de i
+        ...
+        Parameters
+        ----------
+        i: Int
+            Le nombre de pixels de décalage du piou sur l'axe y. Négatif pour remonter, positif pour descendre
         """
         if self.pos_y - self.radius <= 0:
             self.pos_y = 0 + self.radius
@@ -29,13 +33,3 @@ class Piou:
             self.pos_y = util.SCREEN_Y - self.radius
         else :
             self.pos_y += i
-
-    def afficher(self):
-        """
-        Affiche le piou
-        """
-        print("Piou est à x={}, y={}".format(self.pos_x, self.pos_y))
-
-    def display(self):
-        fill(Color(218, 247, 166))
-        circle(self.pos_x, self.pos_y, self.radius)
