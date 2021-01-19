@@ -13,6 +13,10 @@ VITESSE = 1
 LISTE_HAUT=['Z', 'z', "UP"]
 LISTE_BAS=['S', 's', "DOWN"]
 radius_PIOU = 20
+# PORTS ARDUINO$
+BUZZER = 10
+BOUTON = 3
+MICRO = 7
 
 def calcul_nouvelle_pos_y(pos_y_prec):
     sens = 1 if random.randint(0,1) else -1
