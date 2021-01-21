@@ -1,5 +1,7 @@
+import util
+
 class Jeu:
-    def __init__(self, terrain, piou, score=0, arret_jeu=False, vitesse=5):
+    def __init__(self, terrain, piou, score=0, arret_jeu=False, vitesse=util.VITESSE):
         """
         Initialise un objet Jeu, composé d'un terrain et d'un piou. Le score est initialisé à 0 et la vitesse à 5
         """

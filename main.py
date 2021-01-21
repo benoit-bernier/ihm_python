@@ -1,40 +1,76 @@
-from p5 import *
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-from piou import *
+from p5 import *
+import pyfirmata
+
+from piou_p5 import *
 from jeu import *
-from terrain import Terrain
+from terrain_p5 import Terrain_p5
 import util
 
 piou = None
-terrain = None
+terrain = None 
 jeu = None
 
+micro_pin=None 
+bouton_pin=None 
+buzzer_pin=None 
+it=None 
+board = None
 
 def setup():
-    global piou, terrain, jeu
+    global piou, terrain, jeu,  micro_pin, bouton_pin, buzzer_pin, it, board
     size(util.SCREEN_X, util.SCREEN_Y)
 
-    piou = Piou(int(util.SCREEN_Y // 2))
-    terrain = Terrain()
+    piou = Piou_P5(int(util.SCREEN_Y // 2))
+    terrain = Terrain_p5()
     jeu = Jeu(terrain, piou)
 
+    board = pyfirmata.Arduino("/dev/ttyACM0")
+    print("communication successfully started")
+
+    micro_pin = board.digital[util.MICRO]
+    bouton_pin = board.digital[util.BOUTON]
+    buzzer_pin = board.digital[util.BUZZER]
+
+    micro_pin.mode = pyfirmata.INPUT
+    micro_pin.enable_reporting()
+
+    bouton_pin.mode = pyfirmata.INPUT
+    bouton_pin.enable_reporting()
+
+    buzzer_pin.mode = pyfirmata.OUTPUT
+
+    it = pyfirmata.util.Iterator(board)
+    it.start()
 
 def draw():
-    global piou, terrain, jeu
+    global piou, terrain, jeu, micro_pin, bouton_pin, buzzer_pin, it, board
     if jeu.arret_jeu :
+        background(0)
+        text_align("CENTER", "CENTER")
+        fill(255)
         text("Vous avez terminé le jeu", util.SCREEN_X//2, util.SCREEN_Y//2)
     else:
         terrain.avancer(jeu.vitesse)
-        piou.set_pos_y(util.calcul_nouvelle_pos_y(300))
+        if not bouton_pin.read():
+            piou.bouger_de(-5)
+            it = pyfirmata.util.Iterator(board)
+            it.start()
+        elif (key_is_pressed and key in util.LISTE_BAS) or (micro_pin.read()):
+            piou.bouger_de(5)
+            it = pyfirmata.util.Iterator(board)
+            it.start()
+
         if terrain.intersect(piou):
             print("Le jeu s'arrête là, tu as obtenu un score de {}".format(jeu.score))
             jeu.arreter_jeu()
+            buzzer_pin.write(1)
         else:
             jeu.score += 1
 
-        terrain.afficher()
         terrain.display()
-        piou.afficher()
         piou.display()
 
 if __name__ == '__main__':
