@@ -50,6 +50,7 @@ def draw():
     if jeu.arret_jeu :
         background(0)
         text_align("CENTER", "CENTER")
+        fill(255)
         text("Vous avez terminé le jeu", util.SCREEN_X//2, util.SCREEN_Y//2)
     else:
         terrain.avancer(jeu.vitesse)
