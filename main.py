@@ -19,8 +19,13 @@ buzzer_pin=None
 it=None 
 board = None
 
+f=None
+
 def setup():
-    global piou, terrain, jeu,  micro_pin, bouton_pin, buzzer_pin, it, board
+    global piou, terrain, jeu,  micro_pin, bouton_pin, buzzer_pin, it, board, f
+
+    f = create_font("arial.ttf", 32)
+
     size(util.SCREEN_X, util.SCREEN_Y)
 
     piou = Piou_P5(int(util.SCREEN_Y // 2))
@@ -46,12 +51,14 @@ def setup():
     it.start()
 
 def draw():
-    global piou, terrain, jeu, micro_pin, bouton_pin, buzzer_pin, it, board
+    global piou, terrain, jeu, micro_pin, bouton_pin, buzzer_pin, it, board, f
     if jeu.arret_jeu :
         background(0)
         text_align("CENTER", "CENTER")
+        text_font(f)
         fill(255)
-        text("Vous avez terminé le jeu", util.SCREEN_X//2, util.SCREEN_Y//2)
+        text("Vous avez terminé le jeu", util.SCREEN_X//2, util.SCREEN_Y//2-20)
+        text("Votre score est de {}".format(jeu.score), util.SCREEN_X//2, util.SCREEN_Y//2+20)
     else:
         terrain.avancer(jeu.vitesse)
         if not bouton_pin.read():
