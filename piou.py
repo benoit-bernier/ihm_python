@@ -33,3 +33,6 @@ class Piou:
             self.pos_y = util.SCREEN_Y - self.radius
         else :
             self.pos_y += i
+
+def afficher(self):
+    print("Le piou est en position {} en y.".format(self.pos_y))

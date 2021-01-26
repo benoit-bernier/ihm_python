@@ -4,6 +4,10 @@ import util
 from obstacle import Obstacle
 
 class Obstacle_P5 (Obstacle):
+    def __init__(self, min_y, pos_x, largeur=util.LARGEUR_OBSTACLE, hauteur=util.HAUTEUR_CHEMIN, couleur=util.COULEUR):
+        super().__init__(min_y, pos_x)
+        self.couleur = couleur
+
     def display(self):
         """
         Affiche l'obstacle dans p5
