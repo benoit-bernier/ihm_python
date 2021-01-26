@@ -4,9 +4,37 @@ from collections import deque
 from obstacle_p5 import *
 
 class Terrain:
+    """
+    Classe représentant un terrain
+    ...
+    Attributs
+    -----
+    obstacles :
+        Liste des obstacles composant le terrain
+    
+    Méthodes
+    -----
+    nouvel_obstacle():
+        Ajoute un obstacle à la file d'obstacles de l'objet
+    init_obstacles():
+        Initialise la file d'obstacle
+    intersect(piou):
+        Retourne un booleen indiquant si le piou possède une intersection avec l'un des obstacles
+    avancer(vitesse):
+        Fait avancer tous les obstacles du terrain de n où n=vitesse
+    afficher():
+        Affiche le terrain en chaîne de caractères dans la console
+
+    auteur : Benoît
+    """
     def __init__(self, obstacles=deque()):
         """
         Initialise un objet Terrain avec une nouvelle file d'obstacles
+        
+        Parametres
+        -----
+        obstacles : Deque, optionnel
+            Queue d'obstacles, vide par défaut
         """
         self.obstacles=obstacles
         self.init_obstacles()
@@ -39,10 +67,9 @@ class Terrain:
 
     def intersect(self, piou):
         """
-        Retourne la factorielle de n, i.e le produit de tous les nombres entiers 
-        positifs non nuls inférieurs ou égaux à n
+        Retourne un booleen indiquant si le piou possède une intersection avec l'un des obstacles
         ...
-        Parameters
+        Parametres
         ----------
         piou: Piou
             le piou sur lequel on regarde s'il y a intersection avec les obstacles
@@ -87,7 +114,6 @@ class Terrain:
     def afficher(self):
         """
         Affiche le terrain en chaîne de caractères dans la console
-  
         """
         print("Le terrain est composé de {} obstacles : ".format(len(self.obstacles)))
         for i in range(len(self.obstacles)):

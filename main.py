@@ -22,6 +22,12 @@ board = None
 f=None
 
 def setup():
+    """
+        Initialise toute l'installation avec arduino et les modules
+        ...
+                    
+        Auteur Benoit
+        """
     global piou, terrain, jeu,  micro_pin, bouton_pin, buzzer_pin, it, board, f
 
     f = create_font("arial.ttf", 32)
@@ -51,6 +57,12 @@ def setup():
     it.start()
 
 def draw():
+     """
+        Initialise P5
+        ...
+        auteur : Benoit
+    """
+
     global piou, terrain, jeu, micro_pin, bouton_pin, buzzer_pin, it, board, f
     if jeu.arret_jeu :
         background(0)
