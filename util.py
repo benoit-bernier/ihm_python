@@ -10,10 +10,11 @@ POS_X_PIOU = 250
 FACTEUR_DECALAGE_Y = 5
 COULEUR = Color(125, 255, 125)
 VITESSE = 1
-LISTE_HAUT=['Z', 'z', "UP"]
-LISTE_BAS=['S', 's', "DOWN"]
+LISTE_HAUT = ['Z', 'z', "UP"]
+LISTE_BAS = ['S', 's', "DOWN"]
 radius_PIOU = 20
 # PORTS ARDUINO$
+PORT = "/dev/ttyACM0"
 BUZZER = 10
 BOUTON = 3
 MICRO = 7

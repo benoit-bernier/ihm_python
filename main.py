@@ -38,7 +38,7 @@ def setup():
     terrain = Terrain_p5()
     jeu = Jeu(terrain, piou)
 
-    board = pyfirmata.Arduino("/dev/ttyACM0")
+    board = pyfirmata.Arduino(util.PORT)
     print("communication successfully started")
 
     micro_pin = board.digital[util.MICRO]
