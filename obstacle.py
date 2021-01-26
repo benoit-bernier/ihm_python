@@ -1,7 +1,7 @@
 import util
 
 class Obstacle:
-    def __init__(self, min_y, pos_x, largeur=util.LARGEUR_OBSTACLE, hauteur=util.HAUTEUR_CHEMIN, couleur=util.COULEUR):
+    def __init__(self, min_y, pos_x, largeur=util.LARGEUR_OBSTACLE, hauteur=util.HAUTEUR_CHEMIN):
         """
         Initialise un objet Obstacle, défini par sa position minimale en y (début du chemin), et sa position en x. 
             Les propriétés largeur et hauteur sont initialisées avec les valeurs constantes d'util.
@@ -10,7 +10,6 @@ class Obstacle:
         self.pos_x = pos_x
         self.largeur = largeur
         self.hauteur = hauteur
-        self.couleur = couleur
 
     def avancer(self, v):
         """
